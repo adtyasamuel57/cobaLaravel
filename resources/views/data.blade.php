@@ -6,9 +6,19 @@
       Data
     </div>
   </div>
-  <div class="alert alert-success" role="alert">
-    Status Tsunami {{$data_sea[0]->Status}} Selamat Beraktifitas
-  </div>
+  @if($data_api =='aman') 
+    <div class="alert alert-success" role="alert">
+      Status Tsunami {{$data_api}} Selamat Beraktifitas
+    </div>
+  @elseif($data_api =='awas')
+    <div class="alert alert-warning" role="alert">
+      Status Tsunami {{$data_api}} Selamat Beraktifitas
+    </div>
+  @elseif($data_api =='bahaya')
+    <div class="alert alert-danger" role="alert">
+      Status Tsunami {{$data_api}} Selamat Beraktifitas
+    </div>
+  @endif
   <div class="row">
     <div class="col">
       <h6>Lokasi : Pangandaran</h6>
