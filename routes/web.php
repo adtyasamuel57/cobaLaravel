@@ -28,6 +28,9 @@ Route::get('/info', function () {
 Route::get('/pdarurat', function () {
     return view('pdarurat');
 });
+Route::get('/laravelinfo', function () {
+    return view('welcome');
+});
 
 Route::get('/input-data/{tinggi}-{arus}-{getaran}', [AppController::class, 'input_data']);
 Route::get('/tabeldata', [SeaController::class, 'index']);
