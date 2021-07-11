@@ -19,9 +19,9 @@ class AppController extends Controller
         $result = DB::insert('insert into sea (Tgel, Arus, KG,Hasil,Status,created_at) values (?, ?,?,?,?,?)', [$tinggi,$arus,$getaran,15.00,'darurat', $current_date_time]);
         $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/3.5/15/500");
         $client = new Client();
-        $response = $client->request('GET', 'https://antares-cse/cin-BspQAuuZQi-lxSf8');
-        $body = $response->getBody();
-        $body_array = json_decode($body);
+        //$response = $client->request('GET', 'https://antares-cse/cin-BspQAuuZQi-lxSf8');
+        //$body = $response->getBody();
+        //$body_array = json_decode($body);
        // print_r($body_array);
         return "ok";
         

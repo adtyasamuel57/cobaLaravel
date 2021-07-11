@@ -6,15 +6,15 @@
       Data
     </div>
   </div>
-  @if($data_api =='aman') 
+  @if($data_api =="aman") 
     <div class="alert alert-success" role="alert">
       Status Tsunami {{$data_api}} Selamat Beraktifitas
     </div>
-  @elseif($data_api =='awas')
+  @elseif($data_api =="awas")
     <div class="alert alert-warning" role="alert">
       Status Tsunami {{$data_api}} Selamat Beraktifitas
     </div>
-  @elseif($data_api =='bahaya')
+  @elseif($data_api =="bahaya")
     <div class="alert alert-danger" role="alert">
       Status Tsunami {{$data_api}} Selamat Beraktifitas
     </div>
@@ -26,12 +26,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <h6>Tanggal : 10/06/2021</h6>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h6>Waktu : 08:30:31</h6>
-      </div>
+      <h6>Tanggal : {{$data_sea[0]->created_at}} </h6>
     </div>
     <div class="row">
       <div class="col">

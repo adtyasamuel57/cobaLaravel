@@ -38,10 +38,5 @@
   </nav>
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-  <script>
-    $(".div .a").on("click", function() {
-      $(".div").find(".navbar-nav").removeClass("navbar-nav");
-      $(this).addClass("navbar-nav");
-    });
-  </script>
+  
   @yield('content')
