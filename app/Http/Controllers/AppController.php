@@ -27,11 +27,38 @@ class AppController extends Controller
         
 
     }
-    public function data(){
-        $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/");
-        $result = DB::table('sea')->select('*')->limit(5)->orderBy('id', 'desc')->get();
+    public function data($waktu){
+        $current_date_time = Carbon::now()->toDateTimeString();
+       $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/");
+        
+        if ($waktu == 'semua'){
+            $result = DB::table('sea')->select('*')->limit(5)->orderBy('id', 'desc')->get();
+        }
+        elseif ($waktu == 'harian'){
+            $result = DB::table('sea')->select('*')->limit(3)->orderBy('id', 'desc')->get();
+        }
+      
+      
         $stat= (json_decode($posts));
-        return view('data',['data_sea'=>$result],['data_api'=>$stat]);
+
+        $temp_gelombang=[];
+        $temp_arus=[];
+        $temp_getar=[];
+        $temp_waktu=[];
+        foreach ($result as $key => $value) {
+            $temp_gelombang[$key]="'".$value->Tgel."'";
+            $temp_arus[$key]=$value->Arus;
+            $temp_getar[$key]=$value->KG;
+            $temp_waktu[$key]="'".$value->created_at."'";
+        }
+        $temp_gelombang = implode(',',$temp_gelombang);
+        $temp_arus = implode(',',$temp_arus);
+        $temp_getar = implode(',',$temp_getar);
+        $temp_waktu = implode(',',$temp_waktu);
+        
+        return view('data',['data_gelombang'=>$temp_gelombang,'data_arus'=>$temp_arus,'data_getar'=>$temp_getar,'data_waktu'=>$temp_waktu,'data_api'=>$stat,'data_sea'=>$result]);
+        //return $temp_waktu;
     }
+    
 
 }

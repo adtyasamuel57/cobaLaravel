@@ -12,10 +12,10 @@
         var map = new mapboxgl.Map({
           container: 'map',
           style: 'mapbox://styles/mapbox/streets-v11',
-          center: [108.6568, -7.6969],
+          center: [108.6200, -7.6999],
           maxZoom: 16,
           minZoom: 9,
-          zoom: 9.68
+          zoom: 14
         });
             
       </script>

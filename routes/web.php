@@ -18,7 +18,7 @@ use App\Http\Controllers\SeaController;
 Route::get('/', function () {
     return view('beranda');
 });
-Route::get('/data', [AppController::class, 'data']);
+Route::get('/data/{waktu}', [AppController::class, 'data']);
 Route::get('/peta', function () {
     return view('peta');
 });
@@ -31,6 +31,7 @@ Route::get('/pdarurat', function () {
 Route::get('/laravelinfo', function () {
     return view('welcome');
 });
+
 
 Route::get('/input-data/{tinggi}-{arus}-{getaran}', [AppController::class, 'input_data']);
 Route::get('/tabeldata', [SeaController::class, 'index']);

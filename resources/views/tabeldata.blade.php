@@ -9,8 +9,8 @@
             <th scope="col">Arus</th>
             <th scope="col">Kuat Getaran</th>
             <th scope="col">Tinggi Gelombang</th>
-            <th scope="col">Hasil</th>
-            <th scope="col">Status</th>
+            <th scope="col">Tanggal</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
             <td>{{$sea->Arus}}</td>
             <td>{{$sea->KG}}</td>
             <td>{{$sea->Tgel}}</td>
-            <td>{{$sea->Hasil}}</td>
-            <td>{{$sea->Status}}</td>
+            <td>{{$sea->created_at}}</td>
+            
         </tr>
     @endforeach
     </tbody>
