@@ -17,7 +17,48 @@
           minZoom: 9,
           zoom: 14
         });
-            
+        map.on('load', function () {
+// Load an image from an external URL.
+map.loadImage(
+'https://th.bing.com/th/id/R.bec044300062f7987a97cb0f3e8e4827?rik=9gHxYQAworke5w&riu=http%3a%2f%2fimage.flaticon.com%2ficons%2fpng%2f512%2f0%2f619.png&ehk=I22HXK0YVoFCobMMPoqJd8w7atxNkd0BFFLFMCNCQ3E%3d&risl=&pid=ImgRaw',
+function (error, image) {
+if (error) throw error;
+ 
+// Add the image to the map style.
+map.addImage('cat', image);
+ 
+// Add a data source containing one point feature.
+map.addSource('point', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{
+'type': 'Feature',
+'geometry': {
+'type': 'Point',
+'coordinates': [108.6200, -7.6999]
+}
+}
+]
+}
+});
+ 
+// Add a layer to use the image to represent the data.
+map.addLayer({
+'id': 'points',
+'type': 'symbol',
+'source': 'point', // reference the data source
+'layout': {
+'icon-image': 'cat', // reference the image
+'icon-size': 0.15
+}
+});
+}
+);
+});
+                                  
+                      
       </script>
   </div>
 </div>

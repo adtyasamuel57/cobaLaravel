@@ -26,7 +26,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <h6>Tanggal : {{$data_sea[0]->created_at}} </h6>
+      <h6>Tanggal : {{$data_time}} </h6>
     </div>
     <div class="row">
       <div class="col">
@@ -38,9 +38,9 @@
             Filter Grafik
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="/harian">Harian</a></li>
-            <li><a class="dropdown-item" href="/mingguan">Mingguan</a></li>
-            <li><a class="dropdown-item" href="/bulanan">Bulanan</a></li>
+            <li><a class="dropdown-item" href="/data/harian">Harian</a></li>
+            <li><a class="dropdown-item" href="/data/bulanan">Bulanan</a></li>
+            <li><a class="dropdown-item" href="/data/semua">Semua</a></li>
           </ul>
         </div>
       </div>

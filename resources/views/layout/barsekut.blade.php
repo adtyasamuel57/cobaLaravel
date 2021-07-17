@@ -18,7 +18,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="/gambar2/logo telyu.png" alt="" width="150" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,9 +27,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link " href="/">Beranda</a>
-            <a class="nav-link" href="/data">Data</a>
+            <a class="nav-link" href="/data/semua">Data</a>
             <a class="nav-link" href="/peta">Peta</a>
-            <a class="nav-link" href="/info">Info</a>
             <a class="nav-link" href="/pdarurat">Panggilan Darurat</a>
           </div>
         </div>

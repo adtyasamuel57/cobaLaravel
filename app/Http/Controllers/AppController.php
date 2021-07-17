@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use  GuzzleHttp\Client;
 
+
 class AppController extends Controller
 {
     public function input_data($tinggi,$arus,$getaran){
@@ -28,14 +29,18 @@ class AppController extends Controller
 
     }
     public function data($waktu){
-        $current_date_time = Carbon::now()->toDateTimeString();
+        $realtime = Carbon::now()->toDateTimeString();
+
        $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/");
         
         if ($waktu == 'semua'){
             $result = DB::table('sea')->select('*')->limit(5)->orderBy('id', 'desc')->get();
         }
         elseif ($waktu == 'harian'){
-            $result = DB::table('sea')->select('*')->limit(3)->orderBy('id', 'desc')->get();
+            $result = DB::table('sea')->whereDay('created_at', '=', date('d'))->select('*')->limit(10)->orderBy('id', 'desc')->get();
+        }
+        elseif ($waktu == 'bulanan'){
+            $result = DB::table('sea')->whereMonth('created_at', '=', date('m'))->select('*')->limit(30)->orderBy('id', 'desc')->get();
         }
       
       
@@ -56,7 +61,7 @@ class AppController extends Controller
         $temp_getar = implode(',',$temp_getar);
         $temp_waktu = implode(',',$temp_waktu);
         
-        return view('data',['data_gelombang'=>$temp_gelombang,'data_arus'=>$temp_arus,'data_getar'=>$temp_getar,'data_waktu'=>$temp_waktu,'data_api'=>$stat,'data_sea'=>$result]);
+        return view('data',['data_gelombang'=>$temp_gelombang,'data_arus'=>$temp_arus,'data_getar'=>$temp_getar,'data_waktu'=>$temp_waktu,'data_api'=>$stat,'data_sea'=>$result,'data_time'=>$realtime]);
         //return $temp_waktu;
     }
     
