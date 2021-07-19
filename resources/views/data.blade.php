@@ -6,7 +6,7 @@
       Data
     </div>
   </div>
-  @if($data_api =="aman")
+  @if($data_api =="Aman")
   <div class="alert alert-success" role="alert">
     Status Tsunami {{$data_api}} Selamat Beraktifitas
   </div>
@@ -14,7 +14,7 @@
   <div class="alert alert-warning" role="alert">
     Status Tsunami {{$data_api}} Kemasi Barang anda dan segera hubungi petugas berwenang
   </div>
-  @elseif($data_api =="bahaya")
+  @elseif($data_api =="Bahaya")
   <div class="alert alert-danger" role="alert">
     Status Tsunami {{$data_api}} SEGERA LAKUKAN EVAKUASI SECEPATNYA!
   </div>

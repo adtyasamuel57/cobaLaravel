@@ -34,10 +34,10 @@ class AppController extends Controller
        $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/");
         
         if ($waktu == 'semua'){
-            $result = DB::table('sea')->select('*')->limit(5)->orderBy('id', 'desc')->get();
+            $result = DB::table('sea')->select('*')->limit(10)->orderBy('id', 'desc')->get();
         }
         elseif ($waktu == 'harian'){
-            $result = DB::table('sea')->whereDay('created_at', '=', date('d'))->select('*')->limit(10)->orderBy('id', 'desc')->get();
+            $result = DB::table('sea')->whereDay('created_at', '=', date('d'))->select('*')->limit(5)->orderBy('id', 'desc')->get();
         }
         elseif ($waktu == 'bulanan'){
             $result = DB::table('sea')->whereMonth('created_at', '=', date('m'))->select('*')->limit(30)->orderBy('id', 'desc')->get();
