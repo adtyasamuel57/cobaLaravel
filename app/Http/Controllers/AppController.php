@@ -11,59 +11,69 @@ use  GuzzleHttp\Client;
 
 class AppController extends Controller
 {
-    public function input_data($tinggi,$arus,$getaran){
+    public function input_data()
+    {
 
-        $current_date_time = Carbon::now()->toDateTimeString();
+        $headers = [
+            'Content-Type' => 'application/json',
+            'X-M2M-Origin' => '935a0ba3ee50ed9c:c835eedd1ff34101',
+        ];
+        $client = new Client([
+            'headers' => $headers
+        ]);
+        $response = $client->request('GET', 'https://platform.antares.id:8443/~/antares-cse/antares-id/NamiPostman/simulasiNami/la');
 
-       // $hasil= hitungfuzzy($tinggi,$arus,$getaran);
+        $body = $response->getBody();
+        $body_array = json_decode($body, true);
+        $time = $body_array['m2m:cin']['ct'];
+        $data = $body_array['m2m:cin']['con'];
+        $data =  json_decode($data);
 
-        $result = DB::insert('insert into sea (Tgel, Arus, KG,Hasil,Status,created_at) values (?, ?,?,?,?,?)', [$tinggi,$arus,$getaran,15.00,'darurat', $current_date_time]);
-        $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/3.5/15/500");
-        $client = new Client();
-        //$response = $client->request('GET', 'https://antares-cse/cin-BspQAuuZQi-lxSf8');
-        //$body = $response->getBody();
-        //$body_array = json_decode($body);
-       // print_r($body_array);
-        return "ok";
-        
+        $result = DB::insert('insert into sea (Tgel, Arus, KG,Hasil,Status,created_at) values (?, ?,?,?,?,?)', [$data->tg,$data->ka,$data->kg,0.00,'-', $time]);
+      if ($result){
+          echo "Input Data Berhasil";
+            }  
+
 
     }
-    public function data($waktu){
-        $realtime = Carbon::now()->toDateTimeString();
+    public function data($waktu)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $realtime = date('Y-m-d H:i:s');
 
-       $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/");
-        
-        if ($waktu == 'semua'){
-            $result = DB::table('sea')->select('*')->limit(10)->orderBy('id', 'desc')->get();
-        }
-        elseif ($waktu == 'harian'){
-            $result = DB::table('sea')->whereDay('created_at', '=', date('d'))->select('*')->limit(5)->orderBy('id', 'desc')->get();
-        }
-        elseif ($waktu == 'bulanan'){
+
+        $posts = Http::get("https://tsunami-tsukamoto.herokuapp.com/tsukamoto/");
+
+        if ($waktu == 'semua') {
+            $result = DB::table('sea')->select('*')->limit(50)->orderBy('id', 'desc')->get();
+        } elseif ($waktu == 'harian') {
+            $result = DB::table('sea')->whereDate('created_at', '=', date('Y-m-d'))->select('*')->limit(24)->orderBy('id','desc')->get();
+        } elseif ($waktu == 'bulanan') {
             $result = DB::table('sea')->whereMonth('created_at', '=', date('m'))->select('*')->limit(30)->orderBy('id', 'desc')->get();
         }
-      
-      
-        $stat= (json_decode($posts));
 
-        $temp_gelombang=[];
-        $temp_arus=[];
-        $temp_getar=[];
-        $temp_waktu=[];
+
+        $stat = (json_decode($posts));
+        //$heroku= (json_decode($posts));
+        // $status = $heroku->status
+        // $tinggi = $heroku->tinggi
+        // $tinggi = $heroku->tinggi
+
+        $temp_gelombang = [];
+        $temp_arus = [];
+        $temp_getar = [];
+        $temp_waktu = [];
         foreach ($result as $key => $value) {
-            $temp_gelombang[$key]="'".$value->Tgel."'";
-            $temp_arus[$key]=$value->Arus;
-            $temp_getar[$key]=$value->KG;
-            $temp_waktu[$key]="'".$value->created_at."'";
+            $temp_gelombang[$key] = "'" . $value->Tgel . "'";
+            $temp_arus[$key] = $value->Arus;
+            $temp_getar[$key] = $value->KG;
+            $temp_waktu[$key] = "'" . $value->created_at . "'";
         }
-        $temp_gelombang = implode(',',$temp_gelombang);
-        $temp_arus = implode(',',$temp_arus);
-        $temp_getar = implode(',',$temp_getar);
-        $temp_waktu = implode(',',$temp_waktu);
-        
-        return view('data',['data_gelombang'=>$temp_gelombang,'data_arus'=>$temp_arus,'data_getar'=>$temp_getar,'data_waktu'=>$temp_waktu,'data_api'=>$stat,'data_sea'=>$result,'data_time'=>$realtime]);
-        //return $temp_waktu;
-    }
-    
+        $temp_gelombang = implode(',', $temp_gelombang);
+        $temp_arus = implode(',', $temp_arus);
+        $temp_getar = implode(',', $temp_getar);
+        $temp_waktu = implode(',', $temp_waktu);
 
+        return view('data', ['data_gelombang' => $temp_gelombang, 'data_arus' => $temp_arus, 'data_getar' => $temp_getar, 'data_waktu' => $temp_waktu, 'data_api' => $stat, 'data_sea' => $result, 'data_time' => $realtime]);
+    }
 }

@@ -33,6 +33,6 @@ Route::get('/laravelinfo', function () {
 });
 
 
-Route::get('/input-data/{tinggi}-{arus}-{getaran}', [AppController::class, 'input_data']);
+Route::get('/input-data', [AppController::class, 'input_data']);
 Route::get('/tabeldata', [SeaController::class, 'index']);
 
