@@ -53,11 +53,15 @@ class AppController extends Controller
         }
 
 
-        $stat = (json_decode($posts));
-        //$heroku= (json_decode($posts));
-        // $status = $heroku->status
-        // $tinggi = $heroku->tinggi
-        // $tinggi = $heroku->tinggi
+        //$stat = (json_decode($posts[1]));
+        $heroku= (json_decode($posts));
+        $status = $heroku[0];
+        $tinggi = $heroku[1];
+        $ntinggi= $heroku[2];
+        $arus = $heroku[3];
+        $narus = $heroku[4];
+        $getar =$heroku[5];
+        $ngetar=$heroku[6];
 
         $temp_gelombang = [];
         $temp_arus = [];
@@ -74,6 +78,6 @@ class AppController extends Controller
         $temp_getar = implode(',', $temp_getar);
         $temp_waktu = implode(',', $temp_waktu);
 
-        return view('data', ['data_gelombang' => $temp_gelombang, 'data_arus' => $temp_arus, 'data_getar' => $temp_getar, 'data_waktu' => $temp_waktu, 'data_api' => $stat, 'data_sea' => $result, 'data_time' => $realtime]);
+        return view('data', ['data_gelombang' => $temp_gelombang, 'data_arus' => $temp_arus, 'data_getar' => $temp_getar, 'data_waktu' => $temp_waktu, 'data_api' => $status, 'data_sea' => $result, 'data_time' => $realtime,'datapi_tinggi'=>$tinggi,'datapi_arus'=>$arus,'datapi_getar'=>$getar,'nilai_tinggi'=>$ntinggi,'nilai_arus'=>$narus,'nilai_getar'=>$ngetar]);
     }
 }

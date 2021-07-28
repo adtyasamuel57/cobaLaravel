@@ -6,6 +6,7 @@
       Data
     </div>
   </div>
+  <!-- Ini buat beda warna status -->
   @if($data_api =="Aman")
   <div class="alert alert-success" role="alert">
     Status Tsunami {{$data_api}} Selamat Beraktifitas
@@ -19,6 +20,64 @@
     Status Tsunami {{$data_api}} SEGERA LAKUKAN EVAKUASI SECEPATNYA!
   </div>
   @endif
+  <!-- Ini buat beda warna nilai -->
+  <div class="row text-center">
+      <div class="col">
+        @if($datapi_tinggi =="dangkal")
+        <div class="badge bg-danger">
+        <h6> Kedalaman Laut {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
+        </div>
+        @elseif($datapi_tinggi =="sedang")
+        <div class="badge bg-warning text-dark">
+        <h6>Kedalaman Laut {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
+        </div>
+        @elseif($datapi_tinggi =="tinggi")
+        <div class="badge bg-success">
+        <h6>Kedalaman Laut {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
+        </div>
+        @endif
+      </div>
+      <!-- arus -->
+      <div class="col">
+        @if($datapi_arus =="lambat")
+        <div class="badge bg-success">
+        <h6> Kecepatan arus {{$datapi_arus}} dengan kecepatan {{$nilai_arus}} m/s <h6>
+        </div>
+        @elseif($datapi_arus =="sedang")
+        <div class="badge bg-warning text-dark">
+        <h6> Kecepatan arus {{$datapi_arus}} dengan kecepatan {{$nilai_arus}} m/s <h6>
+        </div>
+        @elseif($datapi_arus =="kuat")
+        <div class="badge bg-danger">
+        <h6> Kecepatan arus {{$datapi_arus}} dengan kecepatan {{$nilai_arus}} m/s <h6>
+        </div>
+        @endif
+      </div>
+      <div class="col">
+        @if($datapi_getar =="putih")
+        <div class="badge bg-light text-dark">
+        <h6> Kuat getaran {{$datapi_getar}} dengan skala {{$nilai_getar}} GAL <h6>
+        </div>
+        @elseif($datapi_getar =="hijau")
+        <div class="badge bg-success">
+        <h6> Kuat getaran {{$datapi_getar}} dengan skala {{$nilai_getar}} GAL <h6>
+        </div>
+        @elseif($datapi_getar =="kuning")
+        <div class="badge bg-warning text-dark">
+        <h6> Kuat getaran {{$datapi_getar}} dengan skala {{$nilai_getar}} GAL <h6>
+        </div>
+        @elseif($datapi_getar =="jingga")
+        <div class="badge bg-warning text-dark">
+        <h6> Kuat getaran {{$datapi_getar}} dengan skala {{$nilai_getar}} GAL <h6>
+        </div>
+        @elseif($datapi_getar =="merah")
+        <div class="badge bg-danger">
+        <h6> Kuat getaran {{$datapi_getar}} dengan skala {{$nilai_getar}} GAL <h6>
+        </div>
+        @endif
+      </div>
+  </div>
+  <div class="row"> </div>
   <div class="row">
     <div class="col">
       <h6>Lokasi : Pangandaran</h6>

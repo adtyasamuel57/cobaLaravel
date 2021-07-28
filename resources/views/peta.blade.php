@@ -5,7 +5,10 @@
   <div class="row">
     <div class="h1">
       Peta
+      <h6>Latitude = -7.6999 </h6>
+      <h6>Longitude = 108.6200 </h6>
     </div>
+  
     <div id='map' style='width: 1920px; height: 1080px;'></div>
       <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoiYWR0eWFzYW11ZWwiLCJhIjoiY2txd2MyMTUxMGVvcjMxcnpidnFsYmJlNiJ9.y8z4MaypTyChPJMnWcUXAQ';
@@ -35,6 +38,7 @@ map.addSource('point', {
 'features': [
 {
 'type': 'Feature',
+
 'geometry': {
 'type': 'Point',
 'coordinates': [108.6200, -7.6999]
@@ -57,6 +61,10 @@ map.addLayer({
 }
 );
 });
+
+    var m = marker.getLatLng();
+    coordinates.innerHTML = 'Latitude: ' + m.lat + '<br />Longitude: ' + m.lng;
+
                                   
                       
       </script>
