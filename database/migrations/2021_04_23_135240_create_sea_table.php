@@ -16,11 +16,9 @@ class CreateSeaTable extends Migration
     {
         Schema::create('sea', function (Blueprint $table) {
             $table->id();
-            $table->float('Tinggi Gelombang',8,2);
+            $table->float('Tgel',8,2);
             $table->float('Arus',8,2);
-            $table->float('Kuat Getaran',8,2);
-            $table->float('Hasil',8,2);
-            $table->Char('Status',10);
+            $table->float('KG',8,2);
             $table->timestamps();
         });
     }

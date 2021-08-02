@@ -13,7 +13,7 @@ class AppController extends Controller
 {
     public function input_data()
     {
-
+            // Antares
         $headers = [
             'Content-Type' => 'application/json',
             'X-M2M-Origin' => '935a0ba3ee50ed9c:c835eedd1ff34101',
@@ -22,17 +22,42 @@ class AppController extends Controller
             'headers' => $headers
         ]);
         $response = $client->request('GET', 'https://platform.antares.id:8443/~/antares-cse/antares-id/NamiPostman/simulasiNami/la');
-
         $body = $response->getBody();
         $body_array = json_decode($body, true);
         $time = $body_array['m2m:cin']['ct'];
         $data = $body_array['m2m:cin']['con'];
         $data =  json_decode($data);
 
-        $result = DB::insert('insert into sea (Tgel, Arus, KG,Hasil,Status,created_at) values (?, ?,?,?,?,?)', [$data->tg,$data->ka,$data->kg,0.00,'-', $time]);
+        $result = DB::insert('insert into sea (Tgel, Arus, KG,created_at) values (?, ?,?,?)', [$data->tg,$data->ka,$data->kg, $time]);
       if ($result){
           echo "Input Data Berhasil";
             }  
+
+            // Thinkspeak version 
+            // $headers = [
+            //             'Content-Type' => 'application/json',
+            //             'Accept: application/json',
+            //         ];
+            //         $client = new Client([
+            //             'headers' => $headers
+            //         ]);
+            //         $response = $client->request('GET', 'https://api.thingspeak.com/channels/1458704/feeds.json?api_key=4BPF4WVINA2I8GKG&results=2');
+            //         $body = $response->getBody();
+            //         $body_array = json_decode($body, true);
+            //         // dd($body_array);
+            //         $data = $body_array['feeds'][0];
+            //         $data = json_encode($data,JSON_NUMERIC_CHECK);
+            //         $data =  json_decode($data,true);
+            //         // dd($data);
+            //         $dtinggi = $data['field1'];
+            //         $daruss = $data['field2'];
+            //         $dgempa = $data['field3'];
+            //         // $dtime = $data['created_at'];
+            //         $result = DB::insert('insert into sea (Tgel, Arus, KG) values (?, ?,?)', [$dtinggi,$daruss,$dgempa]);
+            //     if ($result){
+            //         echo "Input Data Berhasil";
+            //             }  
+            
 
 
     }
