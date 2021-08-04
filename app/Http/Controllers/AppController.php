@@ -49,9 +49,9 @@ class AppController extends Controller
                     $data = json_encode($data,JSON_NUMERIC_CHECK);
                     $data =  json_decode($data,true);
                     foreach ($data as $key => $value) {
-                        $dtinggi = $value['field1'];
-                        $daruss = $value['field2'];
-                        $dgempa = $value['field3'];
+                        $dtinggi = ($value['field1'] == null) ? 0 : $value['field1'];
+                        $daruss = ($value['field2'] == null) ? 0 : $value['field2'];
+                        $dgempa = ($value['field3'] == null) ? 0 : $value['field3'];
                        // $dtime = $value['created_at'];
                         $result = DB::insert('insert into sea (Tgel, Arus, KG) values (?, ?,?)', [$dtinggi,$daruss,$dgempa]);
                     }
