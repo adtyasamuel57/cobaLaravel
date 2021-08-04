@@ -24,7 +24,7 @@
   <div class="row text-center">
       <div class="col">
         @if($datapi_tinggi =="dangkal")
-        <div class="badge bg-danger">
+        <div class="badge bg-success">
         <h6> Tinggi Gelombang {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
         </div>
         @elseif($datapi_tinggi =="sedang")
@@ -32,7 +32,7 @@
         <h6>Tinggi Gelombang {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
         </div>
         @elseif($datapi_tinggi =="tinggi")
-        <div class="badge bg-success">
+        <div class="badge bg-danger">
         <h6>Tinggi Gelombang {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
         </div>
         @endif
