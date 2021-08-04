@@ -25,15 +25,15 @@
       <div class="col">
         @if($datapi_tinggi =="dangkal")
         <div class="badge bg-danger">
-        <h6> Kedalaman Laut {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
+        <h6> Tinggi Gelombang {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
         </div>
         @elseif($datapi_tinggi =="sedang")
         <div class="badge bg-warning text-dark">
-        <h6>Kedalaman Laut {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
+        <h6>Tinggi Gelombang {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
         </div>
         @elseif($datapi_tinggi =="tinggi")
         <div class="badge bg-success">
-        <h6>Kedalaman Laut {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
+        <h6>Tinggi Gelombang {{$datapi_tinggi}} dengan ketinggian {{$nilai_tinggi}} Meter <h6>
         </div>
         @endif
       </div>
