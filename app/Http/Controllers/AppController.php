@@ -53,7 +53,8 @@ class AppController extends Controller
                         $daruss = ($value['field2'] == null) ? 0 : $value['field2'];
                         $dgempa = ($value['field3'] == null) ? 0 : $value['field3'];
                        // $dtime = $value['created_at'];
-                        $result = DB::insert('insert into sea (Tgel, Arus, KG) values (?, ?,?)', [$dtinggi,$daruss,$dgempa]);
+                                                                                                            // Fix heroku ClearDB doesn't support changing TZ
+                        $result = DB::insert('insert into sea (Tgel, Arus, KG, created_at) values (?, ?, ?, DATE_ADD(now() , INTERVAL 7 HOUR))', [$dtinggi,$daruss,$dgempa]);
                     }
             if ($result){
                     echo "Input Data Berhasil";
