@@ -41,7 +41,7 @@ class AppController extends Controller
                     $client = new Client([
                         'headers' => $headers
                     ]);
-                    $response = $client->request('GET', 'https://api.thingspeak.com/channels/1458704/feeds.json?api_key=4BPF4WVINA2I8GKG&results=10');
+                    $response = $client->request('GET', 'https://api.thingspeak.com/channels/1458704/feeds.json?api_key=4BPF4WVINA2I8GKG&results');
                     $body = $response->getBody();
                     $body_array = json_decode($body, true);
                     // dd($body_array);
