@@ -9,15 +9,15 @@
   <!-- Ini buat beda warna status -->
   @if($data_api =="Aman")
   <div class="alert alert-success" role="alert">
-    Status Tsunami {{$data_api}} Selamat Beraktifitas
+    <p class="fs-4"> Status Tsunami {{$data_api}} Selamat Beraktifitas </p>
   </div>
   @elseif($data_api =="awas")
   <div class="alert alert-warning" role="alert">
-    Status Tsunami {{$data_api}} Kemasi Barang anda dan segera hubungi petugas berwenang
+    <p class="fs-4"> Status Tsunami {{$data_api}} Kemasi Barang anda dan segera hubungi petugas berwenang </p>
   </div>
   @elseif($data_api =="Bahaya")
   <div class="alert alert-danger" role="alert">
-    Status Tsunami {{$data_api}} SEGERA LAKUKAN EVAKUASI SECEPATNYA!
+    <p class="fs-4"> Status Tsunami {{$data_api}} SEGERA LAKUKAN EVAKUASI SECEPATNYA! </p>
   </div>
   @endif
   <!-- Ini buat beda warna nilai -->
